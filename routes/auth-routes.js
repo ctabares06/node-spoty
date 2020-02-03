@@ -1,6 +1,7 @@
 const express = require('express');
+const axios = require('axios');
 const router = express.Router();
-const http = require('http');
+const spoty = require('../app/auth/apiConfigurations');
 
 // url to spotify
 const spotiUrl = require('../app/auth/generateUri');
@@ -42,11 +43,17 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/authorize', (req, res) => {
-    if (request.query.error) {
+    if (req.query.error) {
         res.write('Ha rechazado la conexion, para continuar debe aceptarla');
         res.end();
     }
-    res.write(req.query.code);
+
+    const options = {code : req.query.code, redirect_uri : spotiUrl.uri }
+
+    const spotiApp = new spoty('/token');
+    getToken = spotiApp.tokenAccess(options);
+
+    res.write(getToken);
     res.end();
 })
 
