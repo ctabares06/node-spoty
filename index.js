@@ -1,10 +1,21 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const app = express();
-const middleware = require('./src/router/middlewares');
-const books = require('./src/router/bookRouter');
-
 dotenv.config();
+
+const db = require('./src/config/mongodb');
+
+db.once('open', () => console.log("you're connected my friend"));
+
+
+// mongo.on('error', console.error.bind(console, "connection error: "));
+
+// mongo.once('open')
+
+
+// const middleware = require('./src/router/middlewares');
+// const books = require('./src/router/bookRouter');
+
 
 // app.use(middleware);
 // app.use(books);
