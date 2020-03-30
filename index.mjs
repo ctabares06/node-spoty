@@ -1,16 +1,10 @@
-const express = require('express');
-const dotenv = require('dotenv');
+import express from "express";
+
 const app = express();
-dotenv.config();
 
-const db = require('./src/config/mongodb');
-
-db.once('open', () => console.log("you're connected my friend"));
-
+import {} from './src/config/mongodb.mjs';
 
 // mongo.on('error', console.error.bind(console, "connection error: "));
-
-// mongo.once('open')
 
 
 // const middleware = require('./src/router/middlewares');

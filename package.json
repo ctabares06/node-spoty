@@ -4,7 +4,7 @@
   "description": "Books Reviews",
   "main": "index.js",
   "scripts": {
-    "run": "nodemon index.js",
+    "run": "nodemon --experimental-modules -r dotenv/config index.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ctr9120",

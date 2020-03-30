@@ -1,13 +1,17 @@
-const schema = require('mongoose').Schema;
+import { Schema } from 'mongoose';
+import comment from './commentSchema';
 
-
-const booksSchema = new schema({
+const booksSchema = new Schema({
     name : String,
     article : String,
     thumbnail : Buffer,
     _userid : Schema.Types.ObjectId,
-    created_at : Date,
+    created_at : {tpe : Date, default : Date.now},
     updated_at : {tpe : Date, default : Date.now},
     status : Boolean,
-    comments : {}
-})
+    comments : comment
+});
+
+export default {
+    booksSchema
+}
